@@ -12,7 +12,7 @@ Please donwload the solution in that repo and start implementing the following c
 
 ![image](https://github.com/user-attachments/assets/eee32d0d-ddfa-474b-99e4-85283ac2030e)
 
-## 2. We create the WebAppComponents application 
+## 2. We create the WebAppComponents project
 
 We right click on the Solution name and we **Add a New Project**
 
@@ -50,7 +50,7 @@ This is the project structure
 
 ![image](https://github.com/user-attachments/assets/cc0352d3-806a-45cc-a063-30593d35353b)
 
-## 5. We edit the WebAppComponents.csproj
+## 5. We edit the WebAppComponents.csproj file
 
 We replace the actual **Project Sdk "Microsoft.NET.Sdk.Web"**
 
@@ -60,13 +60,13 @@ We set a new **Project Sdk "Microsoft.NET.Sdk.Razor"**
 
 ![image](https://github.com/user-attachments/assets/befeda3b-fe47-4c28-930d-90d6aa1f420f)
 
-## 6. We create new folders in project WebAppComponents
+## 6. We create new folders in the WebAppComponents project 
 
 We create these folder in the project
 
 ![image](https://github.com/user-attachments/assets/08e490d2-7748-486d-beec-d80d729bb5ed)
 
-## 7. 
+## 7. We add the Sevices in the WebAppComponents project 
 
 
 
