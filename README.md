@@ -12,7 +12,7 @@ Please donwload the solution in that repo and start implementing the following c
 
 ![image](https://github.com/user-attachments/assets/eee32d0d-ddfa-474b-99e4-85283ac2030e)
 
-## 2. We create the WebAppComponents project
+## 2. We Create the WebAppComponents Project
 
 We right click on the Solution name and we **Add a New Project**
 
@@ -34,7 +34,7 @@ We verify the new project added in the solution
 
 ![image](https://github.com/user-attachments/assets/6d334da8-87ff-4d40-a2e1-4ac895915ac1)
 
-## 3. We modify the WebAppComponents project
+## 3. We Modify the WebAppComponents Project
 
 We delete/remove from the Blazor Web App project these folders and files:
 
@@ -44,13 +44,13 @@ This is the project structure
 
 ![image](https://github.com/user-attachments/assets/47413af9-1b8e-403f-add8-db24aceed90d)
 
-## 4. We load the Nuget Package in the WebAppComponents project
+## 4. We Load the Nuget Package in the WebAppComponents Project
 
 **Microsoft.AspNetCore.Components.Web**
 
 ![image](https://github.com/user-attachments/assets/cc0352d3-806a-45cc-a063-30593d35353b)
 
-## 5. We edit the WebAppComponents.csproj file
+## 5. We Edit the WebAppComponents.csproj File
 
 We replace the actual **Project Sdk "Microsoft.NET.Sdk.Web"**
 
@@ -60,13 +60,13 @@ We set a new **Project Sdk "Microsoft.NET.Sdk.Razor"**
 
 ![image](https://github.com/user-attachments/assets/befeda3b-fe47-4c28-930d-90d6aa1f420f)
 
-## 6. We create new folders in the WebAppComponents project 
+## 6. We Create new folders in the WebAppComponents Project 
 
 We create these folder in the project
 
 ![image](https://github.com/user-attachments/assets/08e490d2-7748-486d-beec-d80d729bb5ed)
 
-## 7. We add the Sevices in the WebAppComponents project 
+## 7. We Add the Sevices in the WebAppComponents Project 
 
 **ICatalogService.cs**
 
@@ -183,11 +183,150 @@ public class CatalogService(HttpClient httpClient) : ICatalogService
 ```
 
 
-## 8.
+## 8. We Add the ItemHelper.cs File in the WebAppComponents Project 
 
 
+```csharp
+using eShop.WebAppComponents.Catalog;
 
-## 9.
+namespace eShop.WebAppComponents.Item;
+
+public static class ItemHelper
+{
+    public static string Url(CatalogItem item)
+        => $"item/{item.Id}";
+}
+```
+
+## 9. We add the Razor Componentes in the WebAppComponents Project 
+
+**CatalogItem.cs**
+
+```csharp
+namespace eShop.WebAppComponents.Catalog;
+
+public record CatalogItem(
+    int Id,
+    string Name,
+    string Description,
+    decimal Price,
+    string PictureUrl,
+    int CatalogBrandId,
+    CatalogBrand CatalogBrand,
+    int CatalogTypeId,
+    CatalogItemType CatalogType);
+
+public record CatalogResult(int PageIndex, int PageSize, int Count, List<CatalogItem> Data);
+public record CatalogBrand(int Id, string Brand);
+public record CatalogItemType(int Id, string Type);
+```
+
+**CatalogListItem.razor**
+
+```razor
+@using eShop.WebAppComponents.Item
+@inject IProductImageUrlProvider ProductImages
+
+<div class="catalog-item">
+    <a class="catalog-product" href="@ItemHelper.Url(Item)" data-enhance-nav="false">
+        <span class='catalog-product-image'>
+            <img alt="@Item.Name" src='@ProductImages.GetProductImageUrl(Item)' />
+        </span>
+        <span class='catalog-product-content'>
+            <span class='name'>@Item.Name</span>
+            <span class='price'>$@Item.Price.ToString("0.00")</span>
+        </span>
+    </a>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public required CatalogItem Item { get; set; }
+
+    [Parameter]
+    public bool IsLoggedIn { get; set; }
+}
+```
+
+**CatalogSearch.razor**
+
+```razor
+@inject CatalogService CatalogService
+@inject NavigationManager Nav
+
+@if (catalogBrands is not null && catalogItemTypes is not null)
+{
+    <div class="catalog-search">
+        <div class="catalog-search-header">
+            <img role="presentation" src="icons/filters.svg" />
+            Filters
+        </div>
+        <div class="catalog-search-types">
+            <div class="catalog-search-group">
+                <h3>Brand</h3>
+                <div class="catalog-search-group-tags">
+                    <a href="@BrandUri(null)"
+                    class="catalog-search-tag @(BrandId == null ? "active " : "")">
+                        All
+                    </a>
+                    @foreach (var brand in catalogBrands)
+                    {
+                        <a href="@BrandUri(brand.Id)"
+                        class="catalog-search-tag @(BrandId == brand.Id ? "active " : "")">
+                            @brand.Brand
+                        </a>
+                    }
+                </div>
+            </div>
+            <div class="catalog-search-group">
+                <h3>Type</h3>
+
+                <div class="catalog-search-group-tags">
+                    <a href="@TypeUri(null)"
+                    class="catalog-search-tag @(ItemTypeId == null ? "active " : "")">
+                    All
+                    </a>
+                    @foreach (var itemType in catalogItemTypes)
+                    {
+                        <a href="@TypeUri(itemType.Id)"
+                        class="catalog-search-tag @(ItemTypeId == itemType.Id ? "active " : "")">
+                            @itemType.Type
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    IEnumerable<CatalogBrand>? catalogBrands;
+    IEnumerable<CatalogItemType>? catalogItemTypes;
+    [Parameter] public int? BrandId { get; set; }
+    [Parameter] public int? ItemTypeId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var brandsTask = CatalogService.GetBrands();
+        var itemTypesTask = CatalogService.GetTypes();
+        await Task.WhenAll(brandsTask, itemTypesTask);
+        catalogBrands = brandsTask.Result;
+        catalogItemTypes = itemTypesTask.Result;
+    }
+
+    private string BrandUri(int? brandId) => Nav.GetUriWithQueryParameters(new Dictionary<string, object?>()
+    {
+        { "page", null },
+        { "brand", brandId },
+    });
+
+    private string TypeUri(int? typeId) => Nav.GetUriWithQueryParameters(new Dictionary<string, object?>()
+    {
+        { "page", null },
+        { "type", typeId },
+    });
+}
+```
 
 
 
