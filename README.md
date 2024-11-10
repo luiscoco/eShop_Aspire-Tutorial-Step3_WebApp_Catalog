@@ -34,13 +34,21 @@ We verify the new project added in the solution
 
 ![image](https://github.com/user-attachments/assets/6d334da8-87ff-4d40-a2e1-4ac895915ac1)
 
-## 3.
+## 3. We modify the WebAppComponents project
 
+We delete/remove from the Blazor Web App project these folders and files:
 
+![image](https://github.com/user-attachments/assets/2a37fbc2-738b-44de-af0c-722d39404ef8)
 
-## 4.
+This is the project structure
 
+![image](https://github.com/user-attachments/assets/47413af9-1b8e-403f-add8-db24aceed90d)
 
+## 4. We load the Nuget Package in the WebAppComponents project
+
+**Microsoft.AspNetCore.Components.Web**
+
+![image](https://github.com/user-attachments/assets/cc0352d3-806a-45cc-a063-30593d35353b)
 
 ## 5.
 
