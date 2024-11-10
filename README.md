@@ -370,8 +370,27 @@ We add the following packages in the WebApp project
 
 **Yarp.ReverseProxy**: YARP (Yet Another Reverse Proxy) is an open-source reverse proxy library created by Microsoft, built on .NET. Yarp.ReverseProxy is the core package, providing essential features for creating a reverse proxy server, including request routing, load balancing, and protocol support (such as HTTP/1.1 and HTTP/2). It’s highly customizable and can be used to route client requests to various backend services, making it valuable in distributed systems and microservices setups.
 
+## 13. We Add the Services Folder
 
+![image](https://github.com/user-attachments/assets/36f4915f-e408-4d76-949b-ff0658ca2a52)
 
+## 14. We Add the 
+
+![image](https://github.com/user-attachments/assets/7403827c-828a-459a-bc4e-8a53e104648e)
+
+**ProductImageUrlProvider.cs**
+
+```csharp
+using eShop.WebAppComponents.Services;
+
+namespace eShop.WebApp.Services;
+
+public class ProductImageUrlProvider : IProductImageUrlProvider
+{
+    public string GetProductImageUrl(int productId)
+        => $"product-images/{productId}?api-version=1.0";
+}
+```
 
 
 
