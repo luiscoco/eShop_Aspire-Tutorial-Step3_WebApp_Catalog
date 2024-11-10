@@ -30,6 +30,10 @@ We select the **.NET 9** Framework and press the Create button
 
 ![image](https://github.com/user-attachments/assets/48183b0e-6eca-4e3a-812c-763e9716eb13)
 
+We verify the new project added in the solution
+
+![image](https://github.com/user-attachments/assets/6d334da8-87ff-4d40-a2e1-4ac895915ac1)
+
 ## 3.
 
 
