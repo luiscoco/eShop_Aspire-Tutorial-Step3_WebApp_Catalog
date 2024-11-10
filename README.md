@@ -354,6 +354,12 @@ We review the Solution folders structure
 
 ![image](https://github.com/user-attachments/assets/7644991d-db01-4353-bca9-16db01f4a5fc)
 
+![image](https://github.com/user-attachments/assets/90cffc03-cff0-46a0-9542-2da9e651ff5d)
+
+We verify the two project references were added
+
+![image](https://github.com/user-attachments/assets/2da2482d-cf61-44b4-8399-24fa5b263539)
+
 
 
 
