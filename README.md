@@ -328,9 +328,31 @@ public record CatalogItemType(int Id, string Type);
 }
 ```
 
+## 10. We Create a Blazor Web Application
+
+We right click on the Solution and we **Add a New Project...**
+
+![image](https://github.com/user-attachments/assets/cb9c616b-a0c4-4b15-9217-257a52ad447e)
+
+We select the **Blazor Web Application** as project template and press the Next button
+
+![image](https://github.com/user-attachments/assets/17bc048b-8e01-4de7-b823-144c14a5de6d)
+
+We input the project name and location and press the Next button
+
+![image](https://github.com/user-attachments/assets/657c3b3e-1d9b-411c-9102-72784a820052)
+
+We select the **.NET 9 Framework** and we press the Create button
+
+![image](https://github.com/user-attachments/assets/21daa4f7-c5a2-4edb-b532-952fc4ee2405)
+
+We review the Solution folders structure
+
+![image](https://github.com/user-attachments/assets/a0956d4c-6daf-489e-95b9-104d52c1075b)
 
 
-## 10.
+
+
 
 
 
