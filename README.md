@@ -350,6 +350,9 @@ We review the Solution folders structure
 
 ![image](https://github.com/user-attachments/assets/a0956d4c-6daf-489e-95b9-104d52c1075b)
 
+## 11. We add the Project References in the Blazor Web Application
+
+![image](https://github.com/user-attachments/assets/7644991d-db01-4353-bca9-16db01f4a5fc)
 
 
 
