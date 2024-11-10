@@ -60,9 +60,11 @@ We set a new **Project Sdk "Microsoft.NET.Sdk.Razor"**
 
 ![image](https://github.com/user-attachments/assets/befeda3b-fe47-4c28-930d-90d6aa1f420f)
 
-## 6. 
+## 6. We create new folders in project WebAppComponents
 
+We create these folder in the project
 
+![image](https://github.com/user-attachments/assets/08e490d2-7748-486d-beec-d80d729bb5ed)
 
 ## 7. 
 
@@ -70,6 +72,14 @@ We set a new **Project Sdk "Microsoft.NET.Sdk.Razor"**
 
 
 ## 8.
+
+
+
+## 9.
+
+
+
+## 10.
 
 
 
