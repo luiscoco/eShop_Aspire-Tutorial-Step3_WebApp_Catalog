@@ -378,8 +378,6 @@ We add the following packages in the WebApp project
 
 ![image](https://github.com/user-attachments/assets/194c9c34-b158-42ab-8887-a445fc93e1bb)
 
-## 14. We Add the 
-
 ![image](https://github.com/user-attachments/assets/7403827c-828a-459a-bc4e-8a53e104648e)
 
 **ProductImageUrlProvider.cs**
