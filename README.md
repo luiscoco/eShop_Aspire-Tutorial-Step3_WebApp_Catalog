@@ -50,9 +50,15 @@ This is the project structure
 
 ![image](https://github.com/user-attachments/assets/cc0352d3-806a-45cc-a063-30593d35353b)
 
-## 5.
+## 5. We edit the WebAppComponents.csproj
 
+We replace the actual **Project Sdk "Microsoft.NET.Sdk.Web"**
 
+![image](https://github.com/user-attachments/assets/39dcb3b6-bbe9-4133-b6cb-3528a5627918)
+
+We set a new **Project Sdk "Microsoft.NET.Sdk.Razor"**
+
+![image](https://github.com/user-attachments/assets/befeda3b-fe47-4c28-930d-90d6aa1f420f)
 
 ## 6. 
 
