@@ -842,6 +842,8 @@ var webApp = builder.AddProject<Projects.WebApp>("webapp")
 
 We review the **Program.cs** whole code in the **eShop.AppHost** project
 
+This code snippet defines a **distributed application setup** using a **builder pattern**, for a containerized **microservices** architecture that involves **PostgreSQL** as a database
+
 ```csharp
 var builder = DistributedApplication.CreateBuilder(args);
 
@@ -861,6 +863,82 @@ var webApp = builder.AddProject<Projects.WebApp>("webapp")
 
 builder.Build().Run();
 ```
+
+The code sets up a distributed application with a **PostgreSQL database** (using a **pgvector** image), a **Catalog API service** that connects to this database, and a web application that accesses the Catalog API
+
+Each component is configured as a **containerized service**, and the entire application is built and run through the builder
+
+**Initialize the Builder**:
+
+```csharp
+var builder = DistributedApplication.CreateBuilder(args);
+```
+
+This line initializes a **DistributedApplication** builder with any command-line arguments (args)
+
+This builder will be used to configure and build the application with various services and dependencies
+
+**Configure PostgreSQL with pgvector**:
+
+```csharp
+var postgres = builder.AddPostgres("postgres")
+    .WithImage("ankane/pgvector")
+    .WithImageTag("latest")
+    .WithLifetime(ContainerLifetime.Persistent);
+```
+
+Here, a **PostgreSQL service** is being configured:
+
+**AddPostgres("postgres")** adds a PostgreSQL database service named "postgres"
+
+**WithImage("ankane/pgvector")** specifies a custom Docker image for PostgreSQL that includes pgvector (a popular extension for storing and querying vectors in PostgreSQL)
+
+**WithImageTag("latest")** pulls the latest version of this image
+
+**WithLifetime(ContainerLifetime.Persistent)** sets the container's lifecycle to "persistent," meaning it will maintain its data even if restarted
+
+**Add a Database to PostgreSQL**:
+
+```csharp
+var catalogDb = postgres.AddDatabase("catalogdb");
+```
+
+This line creates a **new database** within the PostgreSQL service, named "catalogdb"
+
+This database will store application-specific data related to a "catalog" or inventory system
+
+**Configure the Catalog API Project**:
+
+```csharp
+var catalogApi = builder.AddProject<Projects.Catalog_API>("catalog-api")
+    .WithReference(catalogDb);
+```
+
+**AddProject<Projects.Catalog_API>("catalog-api")** adds a project called "catalog-api," representing the Catalog API service
+
+**WithReference(catalogDb)** links the catalogApi service to the catalogDb database, enabling it to access the PostgreSQL database
+
+**Configure the Web Application**:
+
+```csharp
+var webApp = builder.AddProject<Projects.WebApp>("webapp")
+    .WithExternalHttpEndpoints()
+    .WithReference(catalogApi);
+```
+
+**AddProject<Projects.WebApp>("webapp")** adds a "webapp" project representing the web application
+
+**WithExternalHttpEndpoints()** allows external HTTP connections to this web app, making it accessible to users
+
+**WithReference(catalogApi)** links the web application to the Catalog API, establishing a dependency so the web app can interact with the Catalog API
+
+**Build and Run**:
+
+```csharp
+builder.Build().Run();
+```
+
+This final line **builds the entire application** with the specified configurations and dependencies, and then runs it
 
 ## 26. We Copy in the wwwroot folder the images, fonts, icons and css files
 
