@@ -273,6 +273,22 @@ public static class ItemHelper
 
 ## 9. We add the Razor Componentes in the WebAppComponents Project 
 
+This code defines a set of **record types** within the namespace **eShop.WebAppComponents.Catalog**
+
+These records represent different entities related to an e-commerce catalog, likely part of a web application’s data model
+
+This record represents a **detailed catalog item** with basic properties and references to its associated brand and type
+
+This set of records defines the main components for a **catalog system**:
+
+**CatalogItem** for individual items,
+
+**CatalogBrand** and **CatalogItemType** to organize items by brand and type,
+
+and **CatalogResult** to manage paginated lists of catalog items
+
+Using records for these data structures is beneficial because **records** in C# are **immutable reference types** that provide built-in functionality for value equality, making them ideal for data modeling
+
 **CatalogItem.cs**
 
 ```csharp
