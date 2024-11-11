@@ -666,3 +666,14 @@ This is the updated code
 </Router>
 ```
 
+## 20. We Remove the NavMenu.razor file in the WebApp project
+
+![image](https://github.com/user-attachments/assets/cdda2d72-a141-44ab-ac8e-c293f9a82413)
+
+We verify the project folders and files structure
+
+![image](https://github.com/user-attachments/assets/8b28a09c-26ff-4191-8dd4-21e62daa3062)
+
+## 21. 
+
+
