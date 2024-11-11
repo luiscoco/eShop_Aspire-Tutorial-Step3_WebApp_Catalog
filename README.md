@@ -163,6 +163,18 @@ public interface IProductImageUrlProvider
 }
 ```
 
+This C# code defines a **CatalogService** class that implements the **ICatalogService** interface, providing methods for interacting with a remote catalog API in an e-commerce application
+
+The **CatalogService** uses an **HttpClient** to make asynchronous HTTP requests to fetch catalog data
+
+The **CatalogService** class provides a robust, asynchronous interface to retrieve catalog data from a remote API
+
+Each method constructs the appropriate URL for the required resource and uses **HttpClient to fetch data as JSON**
+
+This setup enables the application to interact with catalog items, brands, and types easily, supporting filtering, pagination, and search functionality in a reusable and consistent way
+
+
+
 **CatalogService.cs**
 
 ```csharp
