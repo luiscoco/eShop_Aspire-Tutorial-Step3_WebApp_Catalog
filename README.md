@@ -70,19 +70,21 @@ We create these folder in the project
 
 This C# code defines an interface, ICatalogService, within the eShop.WebAppComponents.Services namespace. It serves as a contract for any class that will implement catalog-related services in the eShop web application. Here’s a brief breakdown of its purpose and methods:
 
-Namespace and Imports:
-
 The code is part of the **eShop.WebAppComponents.Services** namespace, which indicates for organizing services related to an e-commerce catalog
 
 The code imports **System.Collections.Generic** for collections and **System.Threading.Tasks** for asynchronous operations
 
-**Interface Definition (ICatalogService)**: Interfaces in C# define a set of methods that implementing classes must provide
+### 7.1. Interface Definition (ICatalogService)
 
-Here, ICatalogService outlines methods for catalog-related operations, often interacting with catalog items, brands, and types asynchronously
+This interface is designed for flexibility and asynchronicity, allowing the web app to retrieve catalog data efficiently while supporting search, filtering, and pagination
+
+Interfaces in C# define a set of methods that implementing classes must provide
+
+**ICatalogService** outlines methods for catalog-related operations, often interacting with catalog items, brands, and types asynchronously
 
 **Methods**:
 
-**Task<CatalogItem?> GetCatalogItem(int id);**
+**Task<CatalogItem?> GetCatalogItem(int id);**: 
 
 Retrieves a single catalog item by its ID. It returns a CatalogItem (or null if not found) wrapped in a Task for asynchronous operation
 
@@ -106,8 +108,6 @@ Returns a list of available catalog brands.
 
 Returns a list of available catalog item types
 
-This interface is designed for flexibility and asynchronicity, allowing the web app to retrieve catalog data efficiently while supporting search, filtering, and pagination
-
 **ICatalogService.cs**
 
 ```csharp
@@ -128,6 +128,8 @@ namespace eShop.WebAppComponents.Services
     }
 }
 ```
+
+### 7.2. Interface IProductImageUrlProvider
 
 This C# code defines an interface, **IProductImageUrlProvider**, within the **eShop.WebAppComponents.Services** namespace
 
@@ -163,6 +165,8 @@ public interface IProductImageUrlProvider
 }
 ```
 
+### 7.3. CatalogService class
+
 This C# code defines a **CatalogService** class that implements the **ICatalogService** interface, providing methods for interacting with a remote catalog API in an e-commerce application
 
 The **CatalogService** uses an **HttpClient** to make asynchronous HTTP requests to fetch catalog data
@@ -172,8 +176,6 @@ The **CatalogService** class provides a robust, asynchronous interface to retrie
 Each method constructs the appropriate URL for the required resource and uses **HttpClient to fetch data as JSON**
 
 This setup enables the application to interact with catalog items, brands, and types easily, supporting filtering, pagination, and search functionality in a reusable and consistent way
-
-
 
 **CatalogService.cs**
 
@@ -273,6 +275,8 @@ public static class ItemHelper
 
 ## 9. We add the Razor Componentes in the WebAppComponents Project 
 
+### 9.1. CatalogItem.cs
+
 This code defines a set of **record types** within the namespace **eShop.WebAppComponents.Catalog**
 
 These records represent different entities related to an e-commerce catalog, likely part of a web application’s data model
@@ -310,6 +314,8 @@ public record CatalogBrand(int Id, string Brand);
 public record CatalogItemType(int Id, string Type);
 ```
 
+### 9.2. CatalogListItem.razor
+
 This code represents a **Razor component** in a Blazor web application for displaying a **catalog item**
 
 It uses several Blazor and ASP.NET features, such as dependency injection and Razor syntax for dynamic HTML generation
@@ -344,6 +350,8 @@ It uses dependency injection to load the product image URL and constructs the it
     public bool IsLoggedIn { get; set; }
 }
 ```
+
+### 9.3. CatalogSearch.razor
 
 This code defines a **Razor component** that provides a **filtering** interface for **catalog items** in a Blazor web application
 
