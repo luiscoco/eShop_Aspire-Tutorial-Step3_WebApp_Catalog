@@ -628,5 +628,41 @@ global using eShop.WebAppComponents.Services;
 global using eShop.WebAppComponents.Catalog;
 ```
 
-## 18. 
+## 18. We Modify the App.razor file in the WebApp project
+
+This is the updated code
+
+```razor
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="WebApp.styles.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <HeadOutlet />
+</head>
+
+<body>
+    <Routes />
+    <script src="_framework/blazor.web.js"></script>
+</body>
+
+</html>
+```
+
+## 19. We Modify the Routes.razor file in the WebApp project
+
+```razor
+<Router AppAssembly="typeof(Program).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+</Router>
+```
 
