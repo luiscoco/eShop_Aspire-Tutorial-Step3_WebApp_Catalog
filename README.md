@@ -129,6 +129,24 @@ namespace eShop.WebAppComponents.Services
 }
 ```
 
+This C# code defines an interface, **IProductImageUrlProvider**, within the **eShop.WebAppComponents.Services** namespace
+
+It provides a structure for any class that will implement functionality for **generating URLs to product images** in an e-commerce context
+
+**string GetProductImageUrl(CatalogItem item) => GetProductImageUrl(item.Id);**
+
+This is a default method implementation in an interface, which is a feature available in C# 8 and later
+
+This method takes a **CatalogItem** object and generates the product image URL by calling the second method (**GetProductImageUrl(int productId**)) with the item’s ID (item.Id)
+
+**string GetProductImageUrl(int productId);**
+
+This method, which must be implemented by any class that uses this interface, takes a product ID and generates the image URL for that product
+
+The **IProductImageUrlProvider** interface provides a unified way to **obtain product image URLs** by either passing a full **CatalogItem** object or just the product’s ID
+
+This design abstracts the **URL generation** details, so other parts of the application can **retrieve image URLs** without needing to know how they’re generated
+
 **IProductImageUrlProvider.cs**
 
 ```csharp
