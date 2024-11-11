@@ -862,8 +862,20 @@ var webApp = builder.AddProject<Projects.WebApp>("webapp")
 builder.Build().Run();
 ```
 
-##26. We Copy in the wwwroot folder the images, fonts, icons and css files
+## 26. We Copy in the wwwroot folder the images, fonts, icons and css files
 
 ![image](https://github.com/user-attachments/assets/fccd994d-1b21-452b-af77-44f5ede72c25)
+
+![image](https://github.com/user-attachments/assets/17096851-2559-4e48-a206-8177cddb4072)
+
+## 27. We Run the Application and Verify the Results
+
+![image](https://github.com/user-attachments/assets/db7e70c8-6643-43bb-bc76-642273661c1f)
+
+![image](https://github.com/user-attachments/assets/cbdb953f-0514-43df-be87-601f27eed050)
+
+![image](https://github.com/user-attachments/assets/f14cd0a8-f459-4650-a6de-5f624844ef13)
+
+![image](https://github.com/user-attachments/assets/ed94ba0c-c107-47ba-b63b-951b59914b5f)
 
 
