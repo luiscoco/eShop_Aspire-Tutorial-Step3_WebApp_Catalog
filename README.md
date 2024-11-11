@@ -778,7 +778,7 @@ builder.Services.AddHttpClient<CatalogService>(o => o.BaseAddress = new("http://
 
 and this code
 
-```
+```csharp
 app.MapForwarder("/product-images/{id}", "http://localhost:5301", "/api/catalog/items/{id}/pic");
 ```
 
