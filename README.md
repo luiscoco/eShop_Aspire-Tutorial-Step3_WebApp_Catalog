@@ -255,6 +255,9 @@ public class CatalogService(HttpClient httpClient) : ICatalogService
 
 ## 8. We Add the ItemHelper.cs File in the WebAppComponents Project 
 
+This code defines a static **helper** class, **ItemHelper**, within the namespace **eShop.WebAppComponents.Item**
+
+The purpose of this **helper** class is to **generate URLs** for individual catalog items in a web application
 
 ```csharp
 using eShop.WebAppComponents.Catalog;
