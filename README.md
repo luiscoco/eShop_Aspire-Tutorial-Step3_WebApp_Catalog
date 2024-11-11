@@ -345,6 +345,12 @@ It uses dependency injection to load the product image URL and constructs the it
 }
 ```
 
+This code defines a **Razor component** that provides a **filtering** interface for **catalog items** in a Blazor web application
+
+It allows users to **filter products by brand and type**, using injected services to retrieve data and dynamically building URLs for filter links
+
+It **dynamically builds URLs for filtering** and uses dependency injection to access data and navigation services, enhancing interactivity within the web application
+
 **CatalogSearch.razor**
 
 ```razor
@@ -461,11 +467,25 @@ We verify the two project references were added
 
 We add the following packages in the WebApp project
 
-**Asp.Versioning.Http.Client**: This library is part of ASP.NET API Versioning tools, designed to help developers handle versioning for their HTTP API clients. It allows you to specify and manage different versions of HTTP APIs in a way that’s seamless and compatible with ASP.NET's API versioning framework. Using this library, clients can easily specify the API version they want to call, making it useful for applications that need to interact with multiple versions of an API or ensure compatibility with evolving APIs
+**Asp.Versioning.Http.Client**: This library is part of ASP.NET API Versioning tools, designed to help developers handle versioning for their HTTP API clients
 
-**Microsoft.Extensions.ServiceDiscovery.Yarp**: This package is a service discovery extension for YARP (Yet Another Reverse Proxy) in the Microsoft.Extensions ecosystem. It enables dynamic service discovery for applications using YARP, allowing YARP to automatically locate and route requests to the appropriate service endpoints. This is especially useful in microservices architectures, where services might scale dynamically or move between different hosts. It typically integrates with service registries like Consul, Eureka, or Azure Service Fabric
+It allows you to specify and manage different versions of HTTP APIs in a way that’s seamless and compatible with ASP.NET's API versioning framework
 
-**Yarp.ReverseProxy**: YARP (Yet Another Reverse Proxy) is an open-source reverse proxy library created by Microsoft, built on .NET. Yarp.ReverseProxy is the core package, providing essential features for creating a reverse proxy server, including request routing, load balancing, and protocol support (such as HTTP/1.1 and HTTP/2). It’s highly customizable and can be used to route client requests to various backend services, making it valuable in distributed systems and microservices setups
+Using this library, clients can easily specify the API version they want to call, making it useful for applications that need to interact with multiple versions of an API or ensure compatibility with evolving APIs
+
+**Microsoft.Extensions.ServiceDiscovery.Yarp**: This package is a service discovery extension for YARP (Yet Another Reverse Proxy) in the Microsoft.Extensions ecosystem
+
+It enables dynamic service discovery for applications using YARP, allowing YARP to automatically locate and route requests to the appropriate service endpoints
+
+This is especially useful in microservices architectures, where services might scale dynamically or move between different hosts
+
+It typically integrates with service registries like Consul, Eureka, or Azure Service Fabric
+
+**Yarp.ReverseProxy**: YARP (Yet Another Reverse Proxy) is an open-source reverse proxy library created by Microsoft, built on .NET
+
+Yarp.ReverseProxy is the core package, providing essential features for creating a reverse proxy server, including request routing, load balancing, and protocol support (such as HTTP/1.1 and HTTP/2)
+
+It’s highly customizable and can be used to route client requests to various backend services, making it valuable in distributed systems and microservices setups
 
 ![image](https://github.com/user-attachments/assets/b473f1a6-abf7-464f-98c7-4b9992c93164)
 
