@@ -1,5 +1,3 @@
-![image](https://github.com/user-attachments/assets/faeeb574-0aea-4b88-9968-f27dd9fc7e89)
-
 # Building 'eShop' from Zero to Hero: We create the Web Application with Aspire .NET 9
 
 The starting point for this sample is the following **github repo**:
