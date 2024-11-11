@@ -328,6 +328,9 @@ It uses dependency injection to load the product image URL and constructs the it
 
 ```razor
 @using eShop.WebAppComponents.Item
+@using eShop.WebAppComponents.Catalog
+@using eShop.WebAppComponents.Services
+
 @inject IProductImageUrlProvider ProductImages
 
 <div class="catalog-item">
@@ -539,5 +542,7 @@ public class ProductImageUrlProvider : IProductImageUrlProvider
 
 ![image](https://github.com/user-attachments/assets/2d11ea71-b0b0-49ff-b764-593090757c04)
 
+```razor
 
+```
 
