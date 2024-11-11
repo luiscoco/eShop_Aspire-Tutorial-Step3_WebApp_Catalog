@@ -766,7 +766,25 @@ We also verify the **Program.cs** file in the WebApp project
 
 ## 24. We Modify the Program.cs in the WebApp project
 
-We have 
+This code sets up an **HTTP forwarder with service discovery**, registers a singleton **service for providing product image URLs**, and configures an HTTP client to communicate with a versioned API for the catalog service
+
+```csharp
+builder.Services.AddHttpForwarderWithServiceDiscovery();
+
+builder.Services.AddSingleton<IProductImageUrlProvider, ProductImageUrlProvider>();
+builder.Services.AddHttpClient<CatalogService>(o => o.BaseAddress = new("http://localhost:5301"))
+    .AddApiVersion(1.0);
+```
+
+and this code
+
+```
+app.MapForwarder("/product-images/{id}", "http://localhost:5301", "/api/catalog/items/{id}/pic");
+```
+
+We can review the WebApp project whole middleware code:
+
+**Program.cs**
 
 ```csharp
 
@@ -811,5 +829,38 @@ app.MapForwarder("/product-images/{id}", "http://localhost:5301", "/api/catalog/
 
 app.Run();
 ```
+
+## 25. We Modify the Program.cs file in the eShop.AppHost project
+
+We have to register the **WebApp** project in the **middleware** with this code
+
+```csharp
+var webApp = builder.AddProject<Projects.WebApp>("webapp")
+    .WithExternalHttpEndpoints()
+    .WithReference(catalogApi);
+```
+
+We review the **Program.cs** whole code in the **eShop.AppHost** project
+
+```csharp
+var builder = DistributedApplication.CreateBuilder(args);
+
+var postgres = builder.AddPostgres("postgres")
+    .WithImage("ankane/pgvector")
+    .WithImageTag("latest")
+    .WithLifetime(ContainerLifetime.Persistent);
+
+var catalogDb = postgres.AddDatabase("catalogdb");
+
+var catalogApi = builder.AddProject<Projects.Catalog_API>("catalog-api")
+    .WithReference(catalogDb);
+
+var webApp = builder.AddProject<Projects.WebApp>("webapp")
+    .WithExternalHttpEndpoints()
+    .WithReference(catalogApi);
+
+builder.Build().Run();
+```
+
 
 
