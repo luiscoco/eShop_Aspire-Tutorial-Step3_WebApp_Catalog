@@ -760,12 +760,13 @@ We verify the new reference was added in the **eShop.AppHost** project
 
 ![image](https://github.com/user-attachments/assets/abcc41b8-1b88-4004-8428-2f2b208ed64f)
 
-We
+We also verify the **Program.cs** file in the WebApp project
 
+![image](https://github.com/user-attachments/assets/3c1a277e-63f9-4ace-b1bd-05093a56f739)
 
 ## 24. We Modify the Program.cs in the WebApp project
 
-
+We have 
 
 ```csharp
 
