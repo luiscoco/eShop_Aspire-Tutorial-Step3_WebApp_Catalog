@@ -505,6 +505,14 @@ It’s highly customizable and can be used to route client requests to various b
 
 ![image](https://github.com/user-attachments/assets/7403827c-828a-459a-bc4e-8a53e104648e)
 
+This code defines a service class, **ProductImageUrlProvider**, within the eShop.WebApp.Services namespace
+
+This class **provides URLs for product images** in the eShop application
+
+The **ProductImageUrlProvider** class is a service that **generates URLs for accessing product images** based on a given product ID
+
+This URL format centralizes image access logic, making it easy to modify in one place if the structure or API version changes in the future
+
 **ProductImageUrlProvider.cs**
 
 ```csharp
