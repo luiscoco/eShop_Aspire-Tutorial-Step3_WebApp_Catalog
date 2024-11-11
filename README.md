@@ -752,7 +752,18 @@ We have commented the Chatbot component, because it is not included in the scope
 </footer>
 ```
 
-## 23. We Modify the Program.cs in the WebApp project
+## 23. We Add .NET Aspire Orchestrator Support in the WebApp project
+
+![image](https://github.com/user-attachments/assets/dfa0790e-140a-4e6c-a0d8-13193024057c)
+
+We verify the new reference was added in the **eShop.AppHost** project
+
+![image](https://github.com/user-attachments/assets/abcc41b8-1b88-4004-8428-2f2b208ed64f)
+
+We
+
+
+## 24. We Modify the Program.cs in the WebApp project
 
 
 
