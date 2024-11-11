@@ -365,6 +365,9 @@ It **dynamically builds URLs for filtering** and uses dependency injection to ac
 **CatalogSearch.razor**
 
 ```razor
+@using eShop.WebAppComponents.Catalog
+@using eShop.WebAppComponents.Services
+
 @inject CatalogService CatalogService
 @inject NavigationManager Nav
 
