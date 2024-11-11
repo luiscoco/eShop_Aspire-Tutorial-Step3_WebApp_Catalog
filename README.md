@@ -698,6 +698,8 @@ We have commented the Chatbot component, because it is not included in the scope
 
 ## 22. We Add the HeaderBar.razor and FooterBar.razor componentes in the WebApp project
 
+![image](https://github.com/user-attachments/assets/9eb6065f-e32f-432b-a79d-6d929e413292)
+
 **HeaderBar.razor**
 
 ```razor
