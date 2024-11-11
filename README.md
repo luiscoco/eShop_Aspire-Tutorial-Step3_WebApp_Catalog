@@ -445,7 +445,7 @@ It **dynamically builds URLs for filtering** and uses dependency injection to ac
 }
 ```
 
-## 10. We Create a Blazor Web Application
+## 10. We Create a Blazor Web Application (WebApp project)
 
 We right click on the Solution and we **Add a New Project...**
 
@@ -467,7 +467,7 @@ We review the Solution folders structure
 
 ![image](https://github.com/user-attachments/assets/a0956d4c-6daf-489e-95b9-104d52c1075b)
 
-## 11. We Add the Project References in the Blazor Web Application
+## 11. We Add the Project References in the WebApp project
 
 ![image](https://github.com/user-attachments/assets/7644991d-db01-4353-bca9-16db01f4a5fc)
 
@@ -477,7 +477,7 @@ We verify the two project references were added
 
 ![image](https://github.com/user-attachments/assets/2da2482d-cf61-44b4-8399-24fa5b263539)
 
-## 12. We Add the Nuget Packages in the Blazor Web Application
+## 12. We Add the Nuget Packages in the WebApp project
 
 We add the following packages in the WebApp project
 
@@ -503,7 +503,7 @@ It’s highly customizable and can be used to route client requests to various b
 
 ![image](https://github.com/user-attachments/assets/b473f1a6-abf7-464f-98c7-4b9992c93164)
 
-## 13. We Add the Services Folder
+## 13. We Add the Services Folder in the WebApp project
 
 ![image](https://github.com/user-attachments/assets/36f4915f-e408-4d76-949b-ff0658ca2a52)
 
@@ -533,19 +533,100 @@ public class ProductImageUrlProvider : IProductImageUrlProvider
 }
 ```
 
-## 14. We Remove Blazor Web App Default Razor Components
+## 14. We Remove Blazor Web App Default Razor Components in the WebApp project
 
 ![image](https://github.com/user-attachments/assets/398f43e6-cb77-4ca4-aac1-845c30c35aa5)
 
-## 15. We Add a New Folder for the Catalog Razor Component
+## 15. We Add a New Folder for the Catalog Razor Component in the WebApp project
 
 ![image](https://github.com/user-attachments/assets/1eec8373-8d36-43e4-b43e-a5b39088d3f4)
 
-## 16. We Add the Catalog.razor file
+## 16. We Add the Catalog.razor file in the WebApp project
 
 ![image](https://github.com/user-attachments/assets/2d11ea71-b0b0-49ff-b764-593090757c04)
 
-```razor
+This code represents a Blazor page that displays a **Product Catalog with Pagination**
 
+This code **builds a Paginated Catalog Interface that can Filter by Brand and Item Type**, displaying items dynamically based on the URL query parameters and providing pagination controls at the bottom of the catalog
+
+```razor
+@using Microsoft.AspNetCore.Components.Sections
+@using WebAppComponents.Catalog
+@using eShop.WebAppComponents.Services
+
+@page "/"
+
+@inject NavigationManager Nav
+@inject CatalogService CatalogService
+@attribute [StreamRendering]
+
+<PageTitle>AdventureWorks</PageTitle>
+<SectionContent SectionName="page-header-title">Ready for a new adventure?</SectionContent>
+<SectionContent SectionName="page-header-subtitle">Start the season with the latest in clothing and equipment.</SectionContent>
+
+<div class="catalog">
+    <CatalogSearch BrandId="@BrandId" ItemTypeId="@ItemTypeId" />
+
+    @if (catalogResult is null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        <div>
+            <div class="catalog-items">
+                @foreach (var item in catalogResult.Data)
+                {
+                    <CatalogListItem Item="@item" />
+                }
+            </div>
+
+            <div class="page-links">
+                @foreach (var pageIndex in GetVisiblePageIndexes(catalogResult))
+                {
+                    <NavLink ActiveClass="active-page" Match="@NavLinkMatch.All" href="@Nav.GetUriWithQueryParameter("page", pageIndex == 1 ? null : pageIndex)">@pageIndex</NavLink>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    const int PageSize = 9;
+
+    [SupplyParameterFromQuery]
+    public int? Page { get; set; }
+
+    [SupplyParameterFromQuery(Name = "brand")]
+    public int? BrandId { get; set; }
+
+    [SupplyParameterFromQuery(Name = "type")]
+    public int? ItemTypeId { get; set; }
+
+    CatalogResult? catalogResult;
+
+    static IEnumerable<int> GetVisiblePageIndexes(CatalogResult result)
+        => Enumerable.Range(1, (int)Math.Ceiling(1.0 * result.Count / PageSize));
+
+    protected override async Task OnInitializedAsync()
+    {
+        catalogResult = await CatalogService.GetCatalogItems(
+            Page.GetValueOrDefault(1) - 1,
+            PageSize,
+            BrandId,
+            ItemTypeId);
+    }
+}
 ```
+
+## 17. We Add the GlobalUsings.cs file in the WebApp project
+
+![image](https://github.com/user-attachments/assets/8c52685e-e153-439c-9203-5a659198ffcb)
+
+```csharp
+global using eShop.WebAppComponents.Services;
+global using eShop.WebAppComponents.Catalog;
+```
+
+## 18. 
 
