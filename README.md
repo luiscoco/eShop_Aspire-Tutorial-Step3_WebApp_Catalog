@@ -310,6 +310,14 @@ public record CatalogBrand(int Id, string Brand);
 public record CatalogItemType(int Id, string Type);
 ```
 
+This code represents a **Razor component** in a Blazor web application for displaying a **catalog item**
+
+It uses several Blazor and ASP.NET features, such as dependency injection and Razor syntax for dynamic HTML generation
+
+This **component dynamically displays a catalog item with its image, name, and price**
+
+It uses dependency injection to load the product image URL and constructs the item’s link dynamically, making it flexible for any catalog item passed to it
+
 **CatalogListItem.razor**
 
 ```razor
