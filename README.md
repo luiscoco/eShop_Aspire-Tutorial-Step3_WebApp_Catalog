@@ -273,7 +273,7 @@ public static class ItemHelper
 }
 ```
 
-## 9. We add the Razor Componentes in the WebAppComponents Project 
+## 9. We Add the Razor Componentes in the WebAppComponents Project 
 
 ### 9.1. CatalogItem.cs
 
@@ -461,7 +461,7 @@ We review the Solution folders structure
 
 ![image](https://github.com/user-attachments/assets/a0956d4c-6daf-489e-95b9-104d52c1075b)
 
-## 11. We add the Project References in the Blazor Web Application
+## 11. We Add the Project References in the Blazor Web Application
 
 ![image](https://github.com/user-attachments/assets/7644991d-db01-4353-bca9-16db01f4a5fc)
 
@@ -471,7 +471,7 @@ We verify the two project references were added
 
 ![image](https://github.com/user-attachments/assets/2da2482d-cf61-44b4-8399-24fa5b263539)
 
-## 12. We add the Nuget Packages in the Blazor Web Application
+## 12. We Add the Nuget Packages in the Blazor Web Application
 
 We add the following packages in the WebApp project
 
@@ -527,8 +527,17 @@ public class ProductImageUrlProvider : IProductImageUrlProvider
 }
 ```
 
+## 14. We Remove Blazor Web App Default Razor Components
 
+![image](https://github.com/user-attachments/assets/398f43e6-cb77-4ca4-aac1-845c30c35aa5)
 
+## 15. We Add a New Folder for the Catalog Razor Component
+
+![image](https://github.com/user-attachments/assets/1eec8373-8d36-43e4-b43e-a5b39088d3f4)
+
+## 16. We Add the Catalog.razor file
+
+![image](https://github.com/user-attachments/assets/2d11ea71-b0b0-49ff-b764-593090757c04)
 
 
 
